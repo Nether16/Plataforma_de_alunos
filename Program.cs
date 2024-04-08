@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MediawikiNet;
-using Newtonsoft.Json.Linq;
+using System.Net.Http;
+using System.Diagnostics;
+
 namespace plataforma_parte_interna
 {
     class Program
@@ -50,26 +51,25 @@ namespace plataforma_parte_interna
                         {Console.WriteLine("Você já passou!");}
                         break;
 
-                    case 3:
-                            Console.Write("Digite sua pesquisa: ");
-                            string pesquisa = Console.ReadLine();
+                        case 3:
+                        Console.Write("Digite sua pesquisa: ");
+                        string pesquisa = Console.ReadLine();
+                        string url = $"https://pt.wikipedia.org/wiki/{pesquisa}";
 
-                            using(WikipediaClient client = new WikipediaClient())
+                        try
                         {
-                            WikiSearchRequest req = new WikiSearchRequest(pesquisa);
-                            req.Limit = 5; //We would like 5 results
-                            WikiSearchResponse resp = await client.SearchAsync(req);
+                            Process.Start(url);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erro ao abrir o link: {ex.Message}");
                         }
 
-                            foreach (SearchResult s in resp.QueryResult.SearchResults)
-                            {
-                                Console.WriteLine($" - {s.Title}");
-                            }
                         break;
 
-                    default:
+                      default:
                         Console.WriteLine("Sessão encerrada.");
-                        break;
+                      break;
                 }
             }
         }
