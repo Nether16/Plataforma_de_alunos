@@ -11,25 +11,32 @@ namespace Plataforma_do_Aluno
         private string email;
         private string nome;
         private string senha;
-        public string GetNome(){
+        public string GetNome()
+        {
             return email;
         }
-        public void SetEmail(string email){
+        public void SetEmail(string email)
+        {
             this.email = email;
         }
-        public string GetEmail(){
+        public string GetEmail()
+        {
             return nome;
         }
-        public void SetNome(string nome){
+        public void SetNome(string nome)
+        {
             this.nome = nome;
         }
-        public string GetSenha(){
+        public string GetSenha()
+        {
             return senha;
         }
-        public void SetSenha(string senha){
+        public void SetSenha(string senha)
+        {
             this.senha = senha;
         }
-        public Conta(string Email, string Nome, string Senha){
+        public Conta(string Email, string Nome, string Senha)
+        {
             this.email = Email;
             this.nome = Nome;
             this.senha = Senha;
